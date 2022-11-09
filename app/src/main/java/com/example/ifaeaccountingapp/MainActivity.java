@@ -1,0 +1,43 @@
+package com.example.ifaeaccountingapp;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.material.button.MaterialButton;
+
+public class MainActivity extends AppCompatActivity {
+private MaterialButton loginbtn;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        TextView username  = findViewById(R.id.username);
+        TextView password  = findViewById(R.id.password);
+
+        MaterialButton loginbtn = (MaterialButton) findViewById(R.id.loginbtn);
+
+        loginbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (username.getText().toString().equals("Blaauw cc") && password.getText().toString().equals("ifae")){
+                    Toast.makeText(MainActivity.this, "LOGIN SUCCESSFUL", Toast.LENGTH_SHORT).show();
+                    openActivity2();
+                }else{
+                    Toast.makeText(MainActivity.this, "LOGIN FAILED !!", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
+    }
+    public void openActivity2(){
+        Intent intent = new Intent(this,Activity2.class);
+        startActivity(intent);
+
+    }
+}
